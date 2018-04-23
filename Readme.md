@@ -6,6 +6,7 @@ You can follow this main trail to make the learning more easier.
 3. If you pass the testing of the installation on the last step, you can try <a href='docs/installation.md'>a quick start demo</a> in Jupyter Notebook. Quickly go though this demo, don't stuck into the details of the code.
 4. Then you should learn how to run the demo in <a href='docs/rundemo_advanced.md'>an ADVANCED way</a>. The most important thing is figure out how to bring in the specific dataset,and how to configure the pipeline. You don't need to worry about the performance of the model in this step.
 5. Model evaluation and performance improving.
+6. Define your own model architecture.
 
 ......
 To be continued.
