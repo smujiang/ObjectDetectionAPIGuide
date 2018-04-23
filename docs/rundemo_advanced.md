@@ -44,7 +44,7 @@ eval_input_reader: {
 (... Add eval_input configuration here...)
 }
 ```
-Search for "PATH_TO_BE_CONFIGURED" in that file to find the fields that should be configured. Typically, there are 5 places to modify, assoiating with 3 process:
+Search for "PATH_TO_BE_CONFIGURED" in that file to find the fields that should be configured. Typically, there are 5 places to modify, assoiating with:
 #### a) Model initializing
 load a pre-trained model from a check point
 seems wrong when I read the source code of export_inference_graph.py
@@ -64,7 +64,7 @@ if your OS is windows, make sure use \\\ as the dir separater.
 just as:    
 fine_tune_checkpoint: "H:\\\Dataset\\\modelzoo\\\test\\model.ckpt"
 #### b) Training inputs/outputs
-
+#TODO
 #### c) Evaluation inputs/outputs
 The .config file also defines the evaluation presedure.
 
@@ -84,7 +84,7 @@ where $\{PATH_TO_MODEL_DIRECTORY\} points to the directory that contains the tra
 
 The terminal will give you an address to monitor the training progress with your web browser.
 
-## 6. Export exact graph
+## 6. Export the exact graph
 
 
 ## 7. Testing/Evaluation
