@@ -1,6 +1,6 @@
 # Run a demo in an advanced way
 This guidline will lead you know more about how to work with Object-detection API, including how to bring in the specific dataset,and how to configure the pipeline.
-## Prepare your dataset
+## 1. Prepare your dataset
 There are several data sets available online. You can download one of them from the website.
 1. [Oxford-IIIT Pets ](http://www.robots.ox.ac.uk/~vgg/data/pets/) (Recommeded)
 2. [Open Images Dataset V3](https://github.com/openimages/dataset#download-the-data)
@@ -12,11 +12,13 @@ An image annotation tool to label images for bounding box object detection and s
 https://rectlabel.com
 
 There are services like CrowdFlower, CrowdAI or Amazon’s Mechanical Turk that offer data labeling services.
-## Convert the dataset into TF records
-In this step, you must read the . It's will be much easier if you have [this code](../Samples/create_pet_tf_record.py) as reference. By the way, you should split the whole dataset into two parts,one for training the other for testing/validation.
-## Configure the pipline
+## 2. Convert the dataset into TF records
+In this step, you should read the original image files and anotation files in your dataset,and convet them into TF-records. It's will be much easier if you have [this code](../Samples/create_pet_tf_record.py) as reference.
+
+By the way, you should split the whole dataset into two parts,one for training the other for testing/validation.
+## 3. Configure the pipline
 You can choose a model from the model zoo or define your own model architecture
-#### a)  Define a model
+#### a) Define a model
 load a pre-trained model from a check point
 seems wrong when I read the source code of export_inference_graph.py
 you need to generate a .ckpt file from the model files first.
@@ -35,9 +37,7 @@ if your OS is windows, make sure use \\\ as the dir separater.
 just as:    
 fine_tune_checkpoint: "H:\\\Dataset\\\modelzoo\\\test\\model.ckpt"
 
-### 2) configure the pipline
-
-
+###
 ## 4. Train the model
 use the API to train the model.  
 ```
