@@ -13,7 +13,7 @@ https://rectlabel.com
 
 There are services like CrowdFlower, CrowdAI or Amazon’s Mechanical Turk that offer data labeling services.
 ## 2. Convert the dataset into TF records
-In this step, you should read the original image files and anotation files in your dataset,and convet them into TF-records. It's will be much easier if you have [this code](../Samples/create_pet_tf_record.py) as reference.
+In this step, you should read the original image files and anotation files in your dataset,and convet them into TF-records. It will be much easier if you have [this code](../Samples/create_pet_tf_record.py) as reference.
 
 By the way, you should split the whole dataset into two parts,one for training the other for testing/validation.
 ## 3. Configure the pipline
