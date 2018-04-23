@@ -20,7 +20,7 @@ By the way, you should split the whole dataset into two parts,one for training t
 ----
 <font color=green>__From now on, you can play with Object-detection API without writing even a line of python code. You just need to modify the pipeline config file and write some bash/bat scripts to let the demo run.__</font>
 ----
-I offer one example of [.config file](../Samples/models/ssd_inception_v2/ssd_inception_v2_mitoses.config) and scripts for both [Windows](../Samples/ScriptsforWin.sh) and [Linux/Mac](../Samples/ScriptsforLinux.sh) OS.
+I offer one example of [.config file](../Samples/models/ssd_inception_v2/ssd_inception_v2_mitoses.config) and scripts for both [Windows](../Samples/ScriptsforWin.bat) and [Linux/Mac](../Samples/ScriptsforLinux.sh) OS.
 ## 3. Configure the pipline
 All the training and evaluation procedures are defined in .config file. You can find [some examples on the offical page](https://github.com/smujiang/models/tree/master/research/object_detection/samples/configs), just download one as reference.
 A skeleton configuration file is shown below:
