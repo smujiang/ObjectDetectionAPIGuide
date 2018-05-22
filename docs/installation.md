@@ -103,3 +103,25 @@ API by running the following command:
 ```bash
 python object_detection/builders/model_builder_test.py
 ```
+
+Note: You may get an error like this:
+```
+..........................
+ File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/framework/op_def_library.py", line 528, in _apply_op_helper
+    (input_name, err))
+ValueError: Tried to convert 't' to a tensor and failed. Error: Argument must be a dense tensor: range(0, 3) - got shape [3], but wanted [].
+```
+The issue is with models/research/object_detection/utils/learning_schedules.py lines 167-169. Currently it is
+```
+rate_index = tf.reduce_max(tf.where(tf.greater_equal(global_step, boundaries),
+                                      range(num_boundaries),
+                                      [0] * num_boundaries))
+```
+Wrap list() around the range() like this:
+```
+rate_index = tf.reduce_max(tf.where(tf.greater_equal(global_step, boundaries),
+                                     list(range(num_boundaries)),
+                                      [0] * num_boundaries))
+```
+Check the link below as an reference.
+https://github.com/tensorflow/models/issues/3705#issuecomment-375563179
