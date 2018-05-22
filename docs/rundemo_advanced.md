@@ -63,11 +63,34 @@ https://github.com/tensorflow/models/issues/2173
 if your OS is windows, make sure use \\\ as the dir separater.   
 just as:    
 fine_tune_checkpoint: "H:\\\Dataset\\\modelzoo\\\test\\model.ckpt"
+
+if I use the self-trained a model as the check point, I get two losses in a single step. Why?
+```
+INFO:tensorflow:global step 7: loss = 1.3349 (2.967 sec/step)
+INFO:tensorflow:global step 7: loss = 1.3349 (2.967 sec/step)
+INFO:tensorflow:global step 8: loss = 0.7763 (2.958 sec/step)
+INFO:tensorflow:global step 8: loss = 0.7763 (2.958 sec/step)
+```
+* I have multiple tf-records as input training data. But I didn't get two losses if I use the official check point from the modelzoo. I didn't export the graph correctly?
+
 #### b) Training inputs/outputs
-#TODO
+Just modify the corresponding parameter of "input_path". eg:
+```
+input_path: "H:\\PathologicalImages\\MitosesTFRecord\\mitoses_train.record"
+```
+if you have more than one training tf-records, you can configure like this:
+```
+input_path: "H:\\PathologicalImages\\MitosesTFRecord\\mitoses_train*.record"
+```
+or specify them in multiple lines
+```
+input_path: "H:\\PathologicalImages\\MitosesTFRecord\\mitoses_train1.record"
+input_path: "H:\\PathologicalImages\\MitosesTFRecord\\mitoses_train2.record"
+```
+
+
 #### c) Evaluation inputs/outputs
 The .config file also defines the evaluation presedure.
-
 
 ###
 ## 4. Train the model
@@ -85,8 +108,14 @@ where $\{PATH_TO_MODEL_DIRECTORY\} points to the directory that contains the tra
 The terminal will give you an address to monitor the training progress with your web browser.
 
 ## 6. Export the exact graph
-
-
+Offical pages is [here](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/exporting_models.md)
+```
+python object_detection/export_inference_graph.py \
+    --input_type image_tensor \
+    --pipeline_config_path ${PIPELINE_CONFIG_PATH} \
+    --trained_checkpoint_prefix ${TRAIN_PATH} \
+    --output_directory output_inference_graph.pb
+```
 ## 7. Testing/Evaluation
 Evaluation is run as a separate job. The eval job will periodically poll the train directory for new checkpoints and evaluate them on a test dataset. The job can be run using the following command:   
 ```
